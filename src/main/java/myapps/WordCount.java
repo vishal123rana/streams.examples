@@ -50,7 +50,7 @@ public class WordCount {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        builder.<String, String>stream("streams-plaintext-input")
+        builder.<String, String>stream("test")
                .flatMapValues(value -> Arrays.asList(value.toLowerCase(Locale.getDefault()).split("\\W+")))
                .groupBy((key, value) -> value)
                .count(Materialized.<String, Long, KeyValueStore<Bytes, byte[]>>as("counts-store"))

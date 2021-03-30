@@ -36,6 +36,7 @@ import java.util.concurrent.CountDownLatch;
 public class LineSplit {
 
     public static void main(String[] args) throws Exception {
+        System.out.println("vishal rana");
         Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "streams-linesplit");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
@@ -44,7 +45,7 @@ public class LineSplit {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        builder.<String, String>stream("streams-plaintext-input")
+        builder.<String, String>stream("test")
             .flatMapValues(value -> Arrays.asList(value.split("\\W+")))
             .to("streams-linesplit-output");
 
